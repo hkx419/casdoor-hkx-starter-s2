@@ -6,7 +6,7 @@
 
     <groupId>io.github.hkx419</groupId>
     <artifactId>casdoor-hkx-starter-s2</artifactId>
-    <version>1.0.14</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Casdoor Hkx Starter S2</name>

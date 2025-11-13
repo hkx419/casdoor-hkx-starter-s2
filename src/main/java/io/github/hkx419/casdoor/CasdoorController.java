@@ -34,16 +34,14 @@ public class CasdoorController {
 
     @GetMapping("/login/casdoor")
     @Operation(summary = "casdoor登录", description = "casdoor")
-    public Response<String> loginCasdoor(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void loginCasdoor(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 生成随机 state 并存入 session
         String state = UUID.randomUUID().toString();
         request.getSession().setAttribute("oauthState", state);
         // 获取 Casdoor 授权 URL
         String signinUrl = authService.getSigninUrl(properties.getRedirectUri(), state);
         // 直接跳转到 Casdoor 登录页面
-        // 返回 URL 给前端，由前端自己跳转
-        System.out.println("signinUrl: " + signinUrl);
-        return Response.ok(signinUrl, "获取 Casdoor 登录地址成功");
+        response.sendRedirect(signinUrl);
     }
 
 
